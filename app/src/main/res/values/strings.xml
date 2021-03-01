@@ -1,0 +1,28 @@
+<resources>
+    <string name="app_name">ClientGQLApp</string>
+    <string name="action_settings">Settings</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="username">UserName : %1$s</string>
+    <string name="age">Age : %1$d</string>
+    <string name="profession">Profession : %1$s</string>
+    <string name="salary">Salary :  %1$s</string>
+    <string name="posts">Posts</string>
+    <string name="hobbies">Hobbies</string>
+    <string name="title_activity_add_user">AddUserActivity</string>
+    <string name="name">Name</string>
+    <string name="age_add">Age</string>
+    <string name="profession_add">Profession</string>
+    <string name="salary_add">Salary</string>
+    <string name="save_user">Save User</string>
+    <string name="post_comment">Post Comment</string>
+    <string name="hobby_title">Hobby Title</string>
+    <string name="hobby_description">Hobby Description</string>
+    <string name="save_post_and_hobby">Save Post And Hobby</string>
+</resources>

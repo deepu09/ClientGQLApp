@@ -1,0 +1,18 @@
+query UserQuery ($id:ID!) {
+    user(id : $id) {
+        id
+        name
+        age
+        profession
+        salary
+        hobbies {
+            id
+            title
+            description
+        }
+        posts {
+            id
+            comment
+        }
+    }
+}
