@@ -1,0 +1,6 @@
+mutation AddUser($name: String!, $age: Int!, $profession: String!, $salary: String!) {
+    createUser(name: $name, age: $age, profession: $profession, salary: $salary) {
+        id
+        name
+    }
+}

@@ -7,6 +7,7 @@ import com.apollographql.apollo.ApolloClientAwarenessInterceptor
 import com.apollographql.apollo.coroutines.await
 import com.apollographql.apollo.coroutines.toDeferred
 import com.apollographql.apollo.exception.ApolloException
+import com.example.clientgqlapp.AddUserMutation
 import com.example.clientgqlapp.BuildConfig
 import com.example.clientgqlapp.UserQuery
 import com.example.clientgqlapp.UsersQuery
@@ -72,6 +73,27 @@ object AplClient {
                 return@launch
             }
             val user = response.data?.user
+            if (user == null || response.hasErrors()) {
+                // handle application errors
+                return@launch
+            }
+            withContext(Dispatchers.Main) {
+                userLiveData.value = user
+            }
+            return@launch
+        }
+        return userLiveData
+    }
+
+    fun executeAddUserMutation(name: String, age: Int, profession: String, salary: String) : MutableLiveData<AddUserMutation.CreateUser> {
+        val userLiveData: MutableLiveData<AddUserMutation.CreateUser> = MutableLiveData()
+        CoroutineScope(Dispatchers.IO).launch {
+            val response = try {
+                apolloClient.mutate(AddUserMutation(name, age, profession, salary)).await()
+            } catch (e : ApolloException) {
+                return@launch
+            }
+            val user = response.data?.createUser
             if (user == null || response.hasErrors()) {
                 // handle application errors
                 return@launch
