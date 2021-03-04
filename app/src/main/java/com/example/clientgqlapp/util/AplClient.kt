@@ -16,6 +16,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
 
 /**
  * @author vkaja
@@ -27,6 +28,9 @@ object AplClient {
     private val okHttpClient: OkHttpClient by lazy {
         OkHttpClient.Builder()
                 .addInterceptor(ApolloClientAwarenessInterceptor(BuildConfig.APPLICATION_ID, BuildConfig.VERSION_NAME))
+                .addNetworkInterceptor(HttpLoggingInterceptor().apply {
+                    setLevel(HttpLoggingInterceptor.Level.BODY)
+                })
                 .build()
     }
 
